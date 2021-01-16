@@ -1,0 +1,10 @@
+.container {
+  margin: 0 auto;
+  width: 400px;
+  text-align: center;
+}
+
+.notification {
+  font-size: 20px;
+  color: #7c7c7c;
+}
