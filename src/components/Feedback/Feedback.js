@@ -6,9 +6,7 @@ import Notification from './Notification/Notification';
 
 export default class Counter extends Component {
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+    ...this.props.state,
   };
 
   handleFeedBack = feedback => {

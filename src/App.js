@@ -3,7 +3,7 @@ import Feedback from './components/Feedback';
 function App() {
   return (
     <>
-      <Feedback />
+      <Feedback state={{ good: 0, neutral: 0, bad: 0 }} />
     </>
   );
 }
