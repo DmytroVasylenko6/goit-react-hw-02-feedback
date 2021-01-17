@@ -9,7 +9,7 @@ export default function FeedbackOptions({ options, onLeaveFeedback, index }) {
       <ul className={s.list}>
         {OptionsArray.map(option => {
           return (
-            <li key={index.random(1, 1000)} className={s.item}>
+            <li key={index(1, 1000)} className={s.item}>
               <Button text={option} listener={() => onLeaveFeedback(option)} />
             </li>
           );
@@ -22,5 +22,5 @@ export default function FeedbackOptions({ options, onLeaveFeedback, index }) {
 FeedbackOptions.propTypes = {
   options: PropTypes.object.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
-  index: PropTypes.object.isRequired,
+  index: PropTypes.func.isRequired,
 };

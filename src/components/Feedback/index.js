@@ -4,13 +4,6 @@ import Section from './Section/Section';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Notification from './Notification/Notification';
 
-const randomInteger = {
-  random(min, max) {
-    let rand = min - 0.5 + Math.random() * (max - min + 1);
-    return Math.round(rand);
-  },
-};
-
 export default class Counter extends Component {
   state = {
     good: 0,
@@ -35,28 +28,35 @@ export default class Counter extends Component {
     return Number(percentage).toFixed();
   }
 
+  randomInteger(min, max) {
+    let rand = min - 0.5 + Math.random() * (max - min + 1);
+    return Math.round(rand);
+  }
+
   render() {
+    const { good, neutral, bad } = this.state;
+
     return (
       <>
         <Section title={'Please leave feedback'}>
           <FeedbackOptions
             options={this.state}
             onLeaveFeedback={this.handleFeedBack}
-            index={randomInteger}
+            index={this.randomInteger}
           />
         </Section>
 
         <Section title={'Statistics'}>
           {this.countTotalFeedback() > 0 ? (
             <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
+              good={good}
+              neutral={neutral}
+              bad={bad}
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
           ) : (
-            <Notification message="No feedback given"></Notification>
+            <Notification message="No feedback given" />
           )}
         </Section>
       </>
