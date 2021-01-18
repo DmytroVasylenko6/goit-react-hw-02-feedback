@@ -4,9 +4,11 @@ import Section from './Section/Section';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Notification from './Notification/Notification';
 
-export default class Counter extends Component {
+export default class FeedBack extends Component {
   state = {
-    ...this.props.state,
+    good: 0,
+    neutral: 0,
+    bad: 0,
   };
 
   handleFeedBack = feedback => {
@@ -26,11 +28,6 @@ export default class Counter extends Component {
     return Number(percentage).toFixed();
   }
 
-  randomInteger(min, max) {
-    let rand = min - 0.5 + Math.random() * (max - min + 1);
-    return Math.round(rand);
-  }
-
   render() {
     const { good, neutral, bad } = this.state;
 
@@ -40,7 +37,6 @@ export default class Counter extends Component {
           <FeedbackOptions
             options={this.state}
             onLeaveFeedback={this.handleFeedBack}
-            index={this.randomInteger}
           />
         </Section>
 

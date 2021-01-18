@@ -1,17 +1,15 @@
 import PropTypes from 'prop-types';
 import s from './FeedbackOptions.module.css';
-import shortid from 'shortid';
 import Button from '../Button/Button';
 
-export default function FeedbackOptions({ options, onLeaveFeedback, index }) {
+export default function FeedbackOptions({ options, onLeaveFeedback }) {
   const OptionsArray = Object.keys(options);
   return (
     <>
       <ul className={s.list}>
         {OptionsArray.map(option => {
-          const id = shortid.generate();
           return (
-            <li key={id} className={s.item}>
+            <li key={option} className={s.item}>
               <Button text={option} listener={() => onLeaveFeedback(option)} />
             </li>
           );
